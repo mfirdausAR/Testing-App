@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="cordova.js"></script>
+	<script>
+		function pageReady()
+		{
+			//getCurrentAcceleration
+			var accelID = navigator.accelerometer.watchAcceleration(doAccel,errorAccel,{frequency:500});
+		}
+		
+		function doAccel(accel)
+		{
+			document.getElementById("display").innerHTML = "X:" + accel.x + " <br />Y: " + accel.y + " <br />Z: " + accel.z;
+		}
+	</script>
+</head>
+<body onLoad="pageReady()">
+<h1 id="display"></h1>
+</body>
+</html>

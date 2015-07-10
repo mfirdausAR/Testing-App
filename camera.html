@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="cordova.js"></script>
+	<script>
+		function pageLoaded()
+		{
+			document.addEventListener("deviceready",deviceStart,false);
+		}
+		
+		function deviceStart()
+		{
+			//Selepas device ready, this function akan run
+		}
+		
+		function initCamera()
+		{
+			var options = 
+			{
+				quality:80,
+				destinationType:DATA_URL,//FILE_URI (data:image/jpeg;base64 - takpayah letak),NATIVE_URI (Default linux file),DATA_URL(data:image/jpeg;base64 - kne letak)
+				allowEdit:true,
+				encodingType:JPEG, //JPEG or PNG
+				PictureSourceType: CAMERA//PHOTOLIBRARY (Picture folder in your device - photo gallery) , CAMERA(by default), SAVEDPHOTOALBUM (Camera folder)
+			}
+			navigator.camera.getPicture(onSuccess,onFailed,options);
+		}
+		
+		function onSuccess(imgURL)
+		{
+			document.getElementById("pic").src = "data:image/jpeg;base64," + imgURL;
+		}
+		
+		function onFailed(errorMsgWhyFail)
+		{
+			//the parameter will show why the camera is failure
+		}
+	</script>
+</head>
+<!-- Guna onload sebab sebab window.load xsemua phone ada browser like blackberry-->
+<body onload="pageLoaded()">
+<input type="button" value="Start Camera" onclick="initCamera()" />
+<br />
+<hr />
+<img src="" id="pic" height="400" /> 
+</body>
+</html>

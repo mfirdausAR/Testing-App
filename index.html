@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="cordova.js"></script>
+	<script>
+		function pageLoaded()
+		{
+			document.addEventListener("deviceready",siapsedia,false);
+			
+			document.addEventListener("resume",function(){
+				document.getElementById("msg").innerHTML = "App resume";
+			},false);
+		}
+		
+		function siapsedia()
+		{
+			navigator.notification.alert("App is ready",mulaKerja,"The new Test App","Sudah ! Jom Jalan");
+		}
+		
+		function mulakerja()
+		{
+			document.getElementById("msg").innerHTML = "Kerja boleh dimulakan";
+		}
+		
+	</script>
+</head>
+<body>
+<h1>Welcome to phoneGap. </h1>
+<p id="msg"></p>
+
+
+<div>
+	Navigation:
+	<ul>
+		<li><a href="accel.html">Accelerometer</a></li>
+		<li><a href="camera.html">Camera</a></li>
+	</ul>
+</div>
+</body>
+</html>
